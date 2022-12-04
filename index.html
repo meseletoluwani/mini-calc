@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+  <meta charset="UTF-8">
+  <title>Kibo Calculator</title>
+  <style>
+    #calculator {
+      display: grid;
+      max-width: 300px;
+    }
+       
+    .operations {
+      border: black 1px solid;
+      padding: 1px;
+      margin: 1px;
+      max-width: 30px;
+      text-align: center;
+    }
+       
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+  
+<body>
+  <form id="calculator">
+    <input id="no1" class="numbers" type="number">
+    <input id="no2" class="numbers" type="number">
+    <button type="button" id="plus" class="operations">+</button>
+    <button type="button" id="minus" class="operations">-</button>
+    <button type="button" id="multiply" class="operations">x</button>
+    <button type="button" id="equals" class="operations">=</button>
+    <h1 id="display"></h1>
+  </form>
+
+  
+  <p id="answer"></p>
+
+ <script>
+    console.log('hey')
+    const no1 = document.querySelector('#no1')
+    const no2 = document.querySelector('#no2')
+    const display = document.querySelector('#display')
+    const operators = {
+      plus: "+",
+      minus: '-',
+      multiply: "*"
+    }
+    const operations = document.querySelectorAll('.operations')
+    Array.from((operations)).map(operation => operation.addEventListener('click', () => {
+      display.innerHTML = cal(no1.value, no2.value, operators[operation.id])
+
+    }))
+
+    function cal(val1, val2, operator) {
+      return val1 + operator + val2 + '=' + eval(val1 + operator + val2)
+    }
+  </script>
+    
+</body>
+<script src="script.js" />
+
+</html>
